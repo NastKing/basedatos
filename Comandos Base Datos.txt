@@ -1,0 +1,55 @@
+Create database GestorFabrica;
+
+USE GestorFabrica;
+CREATE TABLE Cliente (
+    cui INT PRIMARY KEY,
+    nombre VARCHAR(255),
+    apellido VARCHAR(255),
+    Nit INT(15)
+);
+
+USE GestorFabrica;
+CREATE TABLE Producto (
+    id INT PRIMARY KEY,
+    descripcion VARCHAR(255),
+    precio DECIMAL(10, 2),
+    nombre VARCHAR(255)
+);
+
+USE GestorFabrica;
+
+CREATE TABLE Material (
+    id INT PRIMARY KEY,
+    descripcion VARCHAR(255),
+    precio DECIMAL(10, 2),
+    Cantidad INT(255)
+);
+
+USE GestorFabrica;
+CREATE TABLE Orden (
+    numero INT PRIMARY KEY,
+    FECHA VARCHAR(255)
+);
+
+USE GestorFabrica;
+CREATE TABLE Factura (
+    numeroFactura INT PRIMARY KEY,
+    Serie VARCHAR(255),
+    Clientecliente INT,
+    Ordenorden INT,
+    FOREIGN KEY (Clientecliente) REFERENCES Cliente(cui),
+    FOREIGN KEY (Ordenorden) REFERENCES Orden(numero)
+);
+
+
+
+
+USE GestorFabrica;
+
+CREATE TABLE Proveedor (
+    Id INT PRIMARY KEY,
+    PRODUCTO INT,
+    CANTIDAD INT,
+    FOREIGN KEY (PRODUCTO) REFERENCES Producto(id)
+);
+
